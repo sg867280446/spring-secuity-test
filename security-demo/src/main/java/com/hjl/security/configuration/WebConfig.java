@@ -12,9 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 一个@SpringbootApplication相当于@Configuration,@EnableAutoConfiguration和 @ComponentScan 并具有他们的默认属性值。
- */
+
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
     @Autowired

@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.hjl.security.dto.User;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
@@ -83,5 +87,13 @@ public class UserController {
     @GetMapping("/exception")
     public void testException(){
         throw new RuntimeException();
+    }
+
+
+    @GetMapping("/me")
+    public Object  getCurrentUser(@AuthenticationPrincipal UserDetails user/**Authentication authentication*/){
+        return user;
+//        return authentication;
+//        return SecurityContextHolder.getContext().getAuthentication();
     }
 }
